@@ -27,7 +27,7 @@ int main()
  
     bind(listening, (sockaddr*)&hint, sizeof(hint)); //Assigns the address and port to the socket.
  
-    // Tell Winsock the socket is for listening
+    // Tells the OS that socket listening is ready to accept incoming connection requests
     listen(listening, SOMAXCONN); //SOMAXCONN is the maximum connections allowed.
  
     // Wait for a connection
@@ -39,8 +39,8 @@ int main()
     char host[NI_MAXHOST];      // Client's remote name
     char service[NI_MAXSERV];   // Service (i.e. port) the client is connect on
  
-    memset(host, 0, NI_MAXHOST); // same as memset(host, 0, NI_MAXHOST);
-    memset(service, 0, NI_MAXSERV);
+    memset(host, 0, NI_MAXHOST); 
+    memset(service, 0, NI_MAXSERV); // same as memset(host, 0, NI_MAXHOST);
  
     if (getnameinfo((sockaddr*)&client, sizeof(client), host, NI_MAXHOST, service, NI_MAXSERV, 0) == 0) //tries to get hostname and service
     {
